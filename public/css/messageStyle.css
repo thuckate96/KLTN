@@ -1,0 +1,150 @@
+.box{
+
+}
+.box .list-friend{
+  height: 607px;
+  overflow: auto;
+  background: #3D6652;
+}
+.box .list-friend .friend-box ul{
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.box .list-friend .friend-box ul li {
+
+  margin-top: 10px;
+  height: 70px;
+}
+.box .list-friend .friend-box ul li:hover {
+  border: 1px solid #b3dae2;
+}
+.box .list-friend .friend-box ul li.active {
+  border: 1px solid #b3dae2;
+}
+.box .list-friend .friend-box ul li .friend-nav {
+  height: 62px;
+}
+.box .list-friend .friend-box ul li .friend-nav .friend-img{
+  width: 50px;
+  height: 50px;
+  background: #E6E6E6;
+  border-radius: 25px;
+  margin-top: 5px;
+  float: left;
+}
+.box .list-friend .friend-box ul li .friend-nav .friend-img img{
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+}
+.box .list-friend .friend-box ul li .friend-nav .friend-name{
+  margin-left: 20px;
+  padding-top: 10px;
+}
+.box .list-friend .friend-box ul li .friend-name   a{
+  padding: 8px 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.box .list-friend .friend-box ul li .friend-nav .friend-date{
+  margin-left: 10px;
+  color: #CCCCCC;
+  display: inline;
+}
+.box .list-friend .friend-box ul li .friend-nav .friend-date img{
+  width: 12px;
+  height: 12px;
+}
+.box .message-box{
+  min-height: 608px;
+  background: #CCE0FF;
+}
+
+.box .message-box .name-box{
+  width: 100%;
+  height: 75px;
+  border-bottom: 2px solid white;
+}
+.buff-name{
+  width: 100%;
+  height: 1px;
+}
+.box .message-box .name-box .name-img{
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background: grey;
+  margin-top: 3px;
+  margin-left: 10px;
+  float: left;
+}
+.box .message-box .name-box .name-img img{
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+}
+.box .message-box .name-box a{
+  text-decoration: none;
+  margin-left: 10px;
+  font-weight: bold;
+  color: black;
+}
+.box .message-box .chat-box{
+  width: 100%;
+  height: 450px;
+  border-bottom: 2px solid white;
+  overflow: auto;
+}
+.box .message-box .send-box{
+  width: 100%;
+  height: 82px;
+}
+
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    max-width: 980px;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}

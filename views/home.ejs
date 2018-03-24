@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap.min.js"> </script>
+    <script type="text/javascript" src="jquery.min.js"> </script> -->
+    <script type="text/javascript" src="./js/home.js"> </script>
+
+
+    </script>
+
+    <title>home</title>
+  </head>
+
+  </body>
+    <div class="mainHomeBody">
+      <% include header%>
+      <div id="box-search" class="box-search">
+        <div class="box-search-result">
+          <span style="font-size: 16px;" class="glyphicon glyphicon-search"></span>
+          <span style="font-size: 20px;">Kết quả tìm kiếm</span>
+          <a href="#" id="rm-search"><span class="glyphicon glyphicon-remove"></span></a>
+          <div class="result" id="result" >
+            <ul>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="list_group" class="list-group">
+        <div class="box">
+          <button type="button" class="btn btn-primary" id="addNewGr">
+            <span class="glyphicon glyphicon-plus"></span>
+            <span>Tạo nhóm mới</span>
+          </button>
+          <div id="box_add_group" class="box-add-group">
+            <div class="form-gr">
+              <input type="text" placeholder="Nhập tên nhóm" class="form-control" id="nameGR" value="">
+              <select class="form-control" id="typeGroup">
+                <option value="1">Nhóm công khai</option>
+                <option value="0">Nhóm kín</option>
+              </select>
+            </div>
+            <div class="form-gr-click">
+              <input type="button" class="btn btn-default" id="sendAddNewGr" value="Tạo">
+              <a href="#" id="unCreGr"
+               style="text-decoration: none; font-size: 18;
+               color: white; display:inline-block; margin-top: 10px;">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
+            </div>
+          </div>
+      		<ul>
+            <%for(let group = 0; group < listGroup.length; group++){%>
+              <%if(listGroup[group].is_public == 1){%>
+                <li>
+          				<div class="col-sm-4 box-icon">
+          					<div class="box-img">
+          						<img src="./images/pub-icon2.png">
+          					</div>
+          				</div>
+          				<div class="col-sm-8 box-name">
+          					<a href="group?id=<%=listGroup[group].id%>">
+                      <%=listGroup[group].group_name%>
+                    </a>
+          				</div>
+          			</li>
+              <%}else{%>
+                <li>
+          				<div class="col-sm-4 box-icon">
+          					<div class="box-img">
+          						<img src="./images/pri-icon.png">
+          					</div>
+          				</div>
+          				<div class="col-sm-8 box-name">
+          					<a href="group?id=<%=listGroup[group].id%>">
+                      <%=listGroup[group].group_name%>
+                    </a>
+          				</div>
+          			</li>
+              <%}%>
+            <%}%>
+      		</ul>
+
+      	</div>
+      </div>
+    </div>
+  </body>
+</html>

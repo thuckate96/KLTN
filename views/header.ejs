@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap.min.js"> </script>
+    <script type="text/javascript" src="jquery.min.js"> </script> -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // alert($('#namelog').val());
+        if(!$('#namelog').val()){
+          $('#log').html("<a href='login'> <span class='glyphicon glyphicon-log-in'> Đăng nhập</span></a>");
+        }else {
+          $('#log').html("<div class='dropdown'> "+
+          "<a><%=name%></a>"+
+          "<div class='dropdown-content'>"+
+          "<a href='/logout'> Logout </a>"+
+          "</div>"+
+          "</div>");
+        }
+        $("#nav_page ul li a").click(function(){
+          $(this).parent().find('li a.active').removeClass('active');
+          $(this).addClass('active');
+        });
+      });
+    </script>
+  </head>
+
+  </body>
+
+
+    <div class="">
+      <nav class="headerDiv">
+        <div class="col-sm-3 nav-title">
+          <div class="title-web">
+            <a style="text-decoration: none;" href="#">Học nhóm trực tuyến</a>
+          </div>
+        </div>
+        <div class="col-sm-3 nav-search">
+          <!-- <form action="/search" method="get" class="form-inline form-search"> -->
+            <div class="input-group" style="margin-top: 13px;">
+              <input type="text" class="form-control" id="val-search" placeholder="Search">
+              <div class="input-group-btn" >
+                <button class="btn btn-default" id="search" type="button">
+                  Search
+                </button>
+              </div>
+            </div>
+          <!-- </form> -->
+        </div>
+        <div id="nav_page" class="col-sm-6 nav-page">
+          <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="profile">Trang cá nhân</a> </li>
+            <li><a href="message">Tin nhắn</a></li>
+            <li><a href="#">Thông báo </a></li>
+            <li>
+              <input type="hidden" id="namelog" name="" value="<%=name%>">
+              <div id="log"> </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  </body>
+</html>

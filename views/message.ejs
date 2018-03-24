@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Message</title>
+    <link rel="stylesheet" type="text/css" href="css/messageStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./js/message.js"></script>
+  </head>
+  <body>
+    <div class="">
+      <%include header%>
+      <div class="box">
+        <div class="col">
+          <div class="col-sm-3 list-friend">
+            <div class="search-box">
+
+              <div class="input-group" style="margin-top: 20px;">
+                <input type="text" class="form-control" id="val_search_friend_chat" placeholder="Tìm kiếm bạn bè">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" id="searchFriendChat" type="button">
+                    Tìm kiếm
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- tai day can phai lam chat jquery -->
+            <div id="friend_box"  class="friend-box">
+              <input type="hidden" id="lenListFriendBoxChat" value="<%=listFriendBoxChat.length%>">
+              <input type="hidden" id="id_user_self" value="<%=id_user%>">
+              <ul>
+                <%for(let i=0; i < listFriendBoxChat.length; i++){%>
+                  <li>
+                    <div class="friend-nav">
+                      <div class="friend-img">
+                        <img src="./images/userth.png" alt="user-icon">
+                      </div>
+                      <div class="friend-name">
+                        <input type="hidden" id="friend_chat_id<%=i%>" value="<%=listFriendBoxChat[i].id%>">
+                        <a id="show_friend_box_chat<%=i%>"
+                          href="#id=<%=listFriendBoxChat[i].id%>">
+                          <%=listFriendBoxChat[i].fullname%>
+                        </a>
+                        <span style="color: #600033; font-weight: bold;">+2</span>
+                      </div>
+                      <div class="friend-date">
+                        <span><img src="./images/online.png" alt=""></span>
+                        <span>đang online</span>
+                      </div>
+                    </div>
+                  </li>
+                <%}%>
+                <!-- <li>
+                  <div class="friend-nav">
+                    <div class="friend-img">
+                      <img src="./images/userth.png" alt="user-icon">
+                    </div>
+                    <div class="friend-name">
+                      <a href="#">Vi Van Thuc</a>
+                    </div>
+                    <div class="friend-date">
+                      <span><img src="./images/offline1.png" alt=""></span>
+                      <span>1 giờ trước</span>
+                    </div>
+                  </div>
+                </li> -->
+
+              </ul>
+            </div>
+          </div>
+          <div id="message_box" class="col-sm-9 message-box">
+
+            <!-- <div class="name-box">
+              <div class="buff-name">
+
+              </div>
+              <div class="name-img">
+                <img src="./images/userth.png" alt="user-icon">
+              </div>
+              <div style="margin-top: 10px;">
+                <a  href="#">Vi Van Thuc</a>
+              </div>
+            </div> -->
+
+            <!-- <div id="chat_box" class="chat-box">
+                <div class="container">
+                 <img src="./images/userth.png" alt="Avatar" style="width:100%;">
+                 <p>Hello. How are you today?</p>
+                 <span class="time-right">11:00</span>
+                </div>
+
+                <div class="container darker">
+                 <img src="./images/user.png" alt="Avatar" class="right" style="width:100%;">
+                 <p>Hey! I'm fine. Thanks for asking!</p>
+                 <span class="time-left">11:01</span>
+                </div>
+            </div> -->
+            <!-- <div id="send_box" class="send-box">
+              <div class="buff-name"> </div>
+              <div class="">
+                <textarea style="margin-top:5px; float:left;"
+                 placeholder="Nhập nội dung tin nhắn" id="msgChat" rows="2" cols="110"></textarea>
+                <button style="margin-top:10px; margin-left: 6px;"
+                        type="button" class="btn btn-primary" id="btnChat">
+                  Gửi
+                </button>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

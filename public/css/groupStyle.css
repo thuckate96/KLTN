@@ -1,0 +1,460 @@
+.body-group{
+  width: 100%;
+  background: white;
+ }
+.member-group{
+  width: 20%;
+  height: 90%;
+  overflow: auto;
+  display: inline-block;
+  float: left;
+  background: #3D6652;
+}
+.content-group{
+  background: #F0FFF7;
+  width: 80%;
+  height: 90%;
+  display: inline-block;
+  border-left: 1px solid #D9D9D9;
+}
+.user-box{
+  width: 100%;
+  height: 55px;
+}
+
+.user-box .user-title{
+  width: 100%;
+  height: 68px;
+
+}
+.user-box .user-title .user-img{
+  width: 50px;
+  height: 50px;
+  background: #E6E6E6;
+  float: left;
+  border-radius: 25px;
+  margin-top: 7px;
+  margin-left: 7px;
+
+}
+.user-box .user-title .user-img img{
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+
+}
+.user-box .user-title .user-name{
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid #E6E6E6;
+}
+.user-box .user-title .user-name a{
+  font-size: 20px;
+  padding-left: 80px;
+  padding-top: 10px;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+.user-box .user-setting{
+  height: 52px;
+  width: 100%;
+  border-bottom: 2px solid #D9D9D9;
+}
+.user-box .user-setting .icon-message{
+  width: 52px;
+  height: 52px;
+  float: left;
+}
+.user-box .user-setting .icon-message a img{
+  width: 70%;
+  height: 70%;
+  margin-top: 4px;
+  margin-left: 3px;
+}
+.user-box .user-setting .icon-add-newmember{
+  width: 52px;
+  height: 52px;
+  margin-left: 10px;
+}
+.user-box .user-setting .icon-add-newmember a img{
+  width: 50%;
+  height: 50%;
+  margin-top: 10px;
+}
+.list-member{
+  margin-top: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.list-member li {
+  margin-top: 0px;
+  display: block;
+  height: 60px;
+  border-bottom: 1px solid #E6E6E6;
+}
+.list-member li .icon-member{
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 48px;
+  height: 48px;
+  background: #E6E6E6;
+  border-radius: 24px;
+  float: left;
+}
+.list-member li .icon-member img{
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+}
+.list-member li .name-member{
+  width: 79.8%;
+  height: 100%;
+  display: inline-block;
+}
+.list-member li .name-member a {
+  color: black;
+  font-size: 18px;
+  display: block;
+  margin-top: 8px;
+  margin-left: 15px;
+  text-decoration: none;
+}
+.list-member li:HOVER{
+  background: #D6FFEB;
+
+}
+.icon-group{
+  width: 50px;
+  height: 50px;
+  background: #A5FFE1;
+  margin-top: 5px;
+  margin-left: 10px;
+  border-radius: 25px;
+  display: block;
+  float: left;
+}
+.icon-group img{
+  width: 100%;
+  height: 100%;
+  padding: 8px 8px 8px 8px;
+}
+.name-group{
+  margin-top: 0;
+  width: 63%;
+  height: 60px;
+  margin-left: 10px;
+  float: left;
+}
+.name-group a{
+  text-decoration: none;
+  font-size: 20;
+  padding-top: 7px;
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-left: 4px;
+}
+.title-group{
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #D9D9D9;
+}
+.list-toppic{
+  margin-top: 60px;
+}
+.btn-call{
+  width: 30%;
+  height: 60px;
+  display: inline-block;
+}
+.btn-call a{
+  text-decoration: none;
+  font-size: 35;
+  color: #8080FF;
+  margin-left: 100px;
+  padding-top: 7px;
+  display: block;
+}
+.list-toppic {
+  display: inline-block;
+  width: 310px;
+  min-height: 40px;
+  background: #BFBFBF;
+  margin: 20px 0 10px 20px;
+  max-height: 465px;
+}
+.list-toppic .name-toppic{
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+.list-toppic .name-toppic a{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+.list-toppic ul{
+  list-style-type: none;
+  width: 100%;
+  max-height: 350px;
+  overflow: auto;
+  margin-left: -20px;
+
+}
+.list-toppic ul li a{
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 8px 8px;
+  background: white;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+.list-toppic ul li a:HOVER{
+  background-color: #BFBFBF;
+}
+.list-toppic ul li .modal-dialog .modal-content {
+  width: 750px;
+  margin-left: -100px;
+  background: #CCE0FF;
+}
+.list-toppic ul li .modal-dialog .modal-content  .modal-header{
+  border-bottom: 2px solid white;
+}
+.list-toppic ul li .modal-dialog .modal-content .modal-body{
+  height: 500px;
+  border-bottom: 2px solid white;
+  overflow: auto;
+
+}
+.list-toppic ul li .modal-dialog .modal-content .modal-footer{
+
+}
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    max-width: 700px;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
+.box-add-toppic{
+  display: inline-block;
+  width: 300px;
+  height: 190px;
+  background-color: #D9D9D9;
+  border: 1px solid #B2B2B2;
+  border-radius: 5px;
+}
+.box-add-toppic .child-add-toppic{
+  width: 250px;
+  height: 190px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.list-toppic .add-exercise-box{
+  width: 87%;
+  height: 73px;
+  display: block;
+  margin: 0 auto;
+}
+.list-search{
+  width: 20%;
+  height: 82%;
+  overflow: auto;
+  background: white;
+  border-top: 1px solid #999999;
+  border-right: 1px solid #999999;
+  position: absolute;
+  z-index: 10;
+}
+.list-search .title-list-search{
+  width: 100%;
+  margin-top: 5px;
+  border-bottom: 1px solid #999999;
+}
+
+.list-search .title-list-search .set-title{
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.list-search .title-list-search .right-set{
+  float: right;
+  margin-right: 15px;
+}
+.content-list-search ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+.content-list-search ul li{
+  margin-top: 5px;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #999999;
+}
+.content-list-search ul li .icon-member{
+  margin-top: 5px;
+  margin-left: -14px;
+  width: 48px;
+  height: 48px;
+  background: #E6E6E6;
+  border-radius: 24px;
+}
+.content-list-search ul li .icon-member img{
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+}
+.content-list-search ul li .name-member{
+
+  display: block;
+  height: 100%;
+  width: 55%;
+  margin-left: 5px;
+}
+.content-list-search ul li .name-member a{
+  text-decoration: none;
+  display: block;
+  padding-top: 10px;
+}
+.content-list-search ul li .invite-mem{
+
+  width: 26%;
+  height: 100%;
+
+}
+.content-list-search ul li .invite-mem button{
+  margin-top: 15px;
+  width: 62px;
+  margin-left: -10px;
+}
+.box-chat-child{
+  width: 300px;
+  height: 350px;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+}
+.box-chat-child .name-child-chat{
+  width: 100%;
+  height: 9%;
+  background: #2a493a;
+}
+.box-chat-child .name-child-chat a{
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 2px;
+  margin-left: 5px;
+  color: white;
+}
+
+.box-chat-child .content-child-chat{
+  width: 100%;
+  height: 81%;
+
+  background-color: #e3fcf0;
+  border-bottom: 1px solid #9ed3bb;
+  border-left: 1px solid #9ed3bb;
+  overflow: auto;
+}
+.box-chat-child .content-child-chat ul{
+  list-style-type: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.box-chat-child .send-child-chat{
+  width: 100%;
+  height: 10%;
+  background-color: #e3fcf0;
+  border-bottom: 1px solid #e3fcf0;
+}
+.box-chat-child .content-child-chat ul .container {
+    /*border: 1px solid #dedede;*/
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px 0;
+    max-width: 280px;
+}
+
+.box-chat-child .content-child-chat ul .darker {
+    /*border-color: #ccc;*/
+    background-color: #ddd;
+}
+
+.box-chat-child .content-child-chat ul .container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.box-chat-child .content-child-chat ul .container img {
+    float: left;
+    max-width: 30px;
+    width: 100%;
+    margin-right: 6px;
+    border-radius: 50%;
+}
+
+.box-chat-child .content-child-chat ul .container img.right {
+    float: right;
+    margin-left: 9px;
+    margin-right:0;
+}
+
+.box-chat-child .content-child-chat ul .time-right {
+    float: right;
+    color: #aaa;
+}
+
+.box-chat-child .content-child-chat ul .time-left {
+    float: left;
+    color: #999;
+}

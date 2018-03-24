@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>profile page</title>
+    <link rel="stylesheet" type="text/css" href="css/profileStyle.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./js/profile.js"> </script>
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+
+    </script>
+  </head>
+  <body>
+    <div class="">
+      <%include header%>
+      <div class="col">
+        <div class="pro-nav col-sm-2">
+          <div class="profile-img">
+            <img src="./images/userth.png" alt="icon-profile">
+          </div>
+          <div class="name-profile">
+            <a style="color:white;" href="#"><%=name%></a>
+          </div>
+          <div class="list-prof">
+            <ul id="info-id">
+              <li class="info1"><a class="active" href="#info">Thông tin</a></li>
+              <li class="info2"><a href="#group">Nhóm</a></li>
+              <li class="info3"><a href="#friend">Bạn bè</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pro-detail col-sm-10">
+          <div class="row">
+             <div class="info-profile  col-sm-12">
+               <div class="col-sm-3 info-img">
+                 <img src="./images/userth.png" alt="icon">
+               </div>
+               <div class="info-name col-sm-9">
+
+                <div class="tb_info">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td><span class="hoten">Họ tên: </span></td>
+                        <td>
+                          <span id="val0" class="hoten"><%=listInfoProfile.fullname%></span>
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="val_edit0" placeholder="Họ tên">
+                            <div class="input-group-btn" >
+                              <button class="btn btn-default" id="btn_edit0" type="button">
+                                Sửa
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <a href="#" id="edit0"><span class="glyphicon glyphicon-edit"></span></a>
+                          <a href="#" id="cancel_edit0"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="hoten">Sinh ngày: </span>
+                        </td>
+                        <td>
+                          <span id="val1" class="hoten">
+                             <%=listInfoProfile.birthday%>
+                          </span>
+                          <div class="input-group">
+                            <input type="date" class="form-control" id="val_edit1">
+                            <div class="input-group-btn" >
+                              <button class="btn btn-default" id="btn_edit1" type="button">
+                                Sửa
+                              </button>
+                            </div>
+                          </div>
+
+                        </td>
+
+                        <td>
+                          <a href="#" id="edit1"><span class="glyphicon glyphicon-edit"></span></a>
+                          <a href="#" id="cancel_edit1"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="hoten">Quê quán: </span>
+                        </td>
+                        <td>
+                          <span id="val2" class="hoten"><%=listInfoProfile.address%></span>
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="val_edit2" placeholder="Quê quán">
+                            <div class="input-group-btn" >
+                              <button class="btn btn-default" id="btn_edit2" type="button">
+                                Sửa
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <a href="#" id="edit2"><span class="glyphicon glyphicon-edit"></span></a>
+                          <a href="#" id="cancel_edit2"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="hoten">Nghề nghiệp: </span>
+                        </td>
+                        <td>
+                          <span id="val3" class="hoten"><%=listInfoProfile.jobs%></span>
+                          <div class="input-group">
+                            <input type="text" class="form-control" id="val_edit3" placeholder="Nghề nghiệp">
+                            <div class="input-group-btn" >
+                              <button class="btn btn-default" id="btn_edit3" type="button">
+                                Sửa
+                              </button>
+                            </div>
+                          </div>
+                        <td>
+                          <a href="#" id="edit3"><span class="glyphicon glyphicon-edit"></span></a>
+                          <a href="#" id="cancel_edit3"><span class="glyphicon glyphicon-remove"></span></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+
+
+
+               </div>
+               <div class="col-sm-12 hobby-info">
+                 <div class="tb_info_2">
+                   <table class="table">
+                     <tbody>
+
+                       <tr>
+                         <td>
+                            <span class="hoten">Sở thích: </span>
+                         </td>
+                         <td>
+                            <span id="val4" class="hoten"><%=listInfoProfile.hobbies%> </span>
+                            <div class="input-group">
+                              <textarea id="val_edit4" rows="3"  class="form-control" placeholder="Sở thích" cols="65"></textarea>
+                              <div class="input-group-btn" >
+                                <button class="btn btn-default" id="btn_edit4" type="button">
+                                  Sửa
+                                </button>
+                              </div>
+                            </div>
+                         <td>
+                           <a href="#" id="edit4"><span class="glyphicon glyphicon-edit"></span></a>
+                           <a href="#" id="cancel_edit4"><span class="glyphicon glyphicon-remove"></span></a>
+                         </td>
+                       </tr>
+                       <tr>
+                         <td>
+                            <span class="hoten">Châm ngôn yêu thích: </span>
+                         </td>
+                         <td>
+                            <span class="hoten" id="val5"><%=listInfoProfile.favorite_motto%></span>
+                            <div class="input-group">
+                              <textarea placeholder="Châm ngôn yêu thích" class="form-control" id="val_edit5" rows="3" cols="65"></textarea>
+                              <div class="input-group-btn" >
+                                <button class="btn btn-default" id="btn_edit5" type="button">
+                                  Sửa
+                                </button>
+                              </div>
+                            </div>
+                         <td>
+                           <a href="#" id="edit5"><span class="glyphicon glyphicon-edit"></span></a>
+                           <a href="#" id="cancel_edit5"><span class="glyphicon glyphicon-remove"></span></a>
+                         </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                 </div>
+
+
+
+
+               </div>
+             </div>
+             <div class="group-profile col-sm-12">
+               <div class="member-group col-sm-12">
+                 <span style="margin-top:7px; font-weight:bold;" class="glyphicon glyphicon-tint"></span>
+                 <span class="" style="margin-top:7px; font-weight:bold; font-size:16px;">
+                   Thành viên nhóm
+                 </span>
+                 <div class="list-member">
+                   <input type="hidden" id="lenListMem" value="<%=listMem.length%>">
+                   <ul>
+
+                     <%for(let mem=0; mem<listMem.length; mem++){%>
+                       <%if(listMem[mem].is_public == 1){%>
+                         <li id="li_usr_is_mem<%=mem%>">
+                           <div class="col-sm-2 left-gr">
+                             <div class="pr_gr_img_box">
+                               <img src="./images/pub-icon2.png" alt="icon-group">
+                             </div>
+                           </div>
+                           <div class="col-sm-6 middle-gr">
+                             <a href="#" style="text-decoration:none;"><%=listMem[mem].group_name%></a>
+                           </div>
+                           <div class="col-sm-4 right-gr">
+                             <input type="hidden" id="user_group_cancel<%=mem%>"
+                             value="<%=listMem[mem].id_user_group%>">
+                              <button type="button" id="out_group<%=mem%>">
+                                <span>Rời nhóm</span>
+                              </button>
+                           </div>
+                         </li>
+                       <%}else{%>
+                         <li id="li_usr_is_mem<%=mem%>">
+                           <div class="col-sm-2 left-gr">
+                             <div class="pr_gr_img_box">
+                               <img src="./images/pri-icon.png" alt="icon-group">
+                             </div>
+                           </div>
+                           <div class="col-sm-6 middle-gr">
+                             <a href="#" style="text-decoration:none;"><%=listMem[mem].group_name%></a>
+                           </div>
+                           <div class="col-sm-4 right-gr">
+                             <input type="hidden" id="user_group_cancel<%=mem%>"
+                             value="<%=listMem[mem].id_user_group%>">
+                              <button type="button" id="out_group<%=mem%>">
+                                <span>Rời nhóm</span>
+                              </button>
+                           </div>
+                         </li>
+
+                      <%}%>
+                     <%}%>
+
+                   </ul>
+                 </div>
+               </div>
+               <div class="admin-group col-sm-12">
+                 <span style="margin-top:7px; font-weight:bold;" class="glyphicon glyphicon-fire"></span>
+                 <span style="margin-top:7px; font-weight:bold; font-size:16px;" class="">
+                   Admin Nhóm
+                 </span>
+                 <div class="list-member">
+                   <input type="hidden" id="admLen" value="<%=listAdm.length%>">
+                   <input type="hidden" id="grmemLen" value="<%=listGrMem.length%>">
+                   <ul>
+
+                     <%for(let mem=0; mem<listAdm.length; mem++){%>
+                       <%if(listAdm[mem].is_public == 1){%>
+                         <li id="li_listAdm<%=mem%>">
+                           <div class="col-sm-2 left-gr">
+                             <div class="pr_gr_img_box">
+                               <img src="./images/pub-icon2.png" alt="icon-group">
+                             </div>
+                           </div>
+                           <div class="col-sm-6 middle-gr">
+                             <a href="#" data-toggle="modal" data-target="#myModal<%=mem%>"
+                             style="text-decoration:none;">
+                               <%=listAdm[mem].group_name%></a>
+                           </div>
+                           <div class="col-sm-4 right-gr">
+                             <input type="hidden" id="idRmAdmGr<%=mem%>" value="<%=listAdm[mem].id%>">
+                             <button type="button" id="btnAdmGrRm<%=mem%>">
+                               <span>Hủy nhóm</span>
+                             </button>
+                           </div>
+                           <div class="modal fade" id="myModal<%=mem%>" role="dialog">
+                            <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title"><%=listAdm[mem].group_name%></h4>
+                                  <span></span><span id="mess<%=mem%>"></span>
+                                </div>
+                                <div class="modal-body">
+                                  <ul>
+                                    <%for(let grmem=0; grmem<listGrMem.length; grmem++){%>
+                                      <%if(listGrMem[grmem].id_group ==listAdm[mem].id){%>
+                                        <li id="li_gr<%=mem%><%=grmem%>">
+                                          <div class="left_pro_usr col-sm-2">
+                                            <div class="img_pro_box">
+                                              <img src="./images/userth.png" alt="icon-user">
+                                            </div>
+                                          </div>
+                                          <div class="midle_pro_usr col-sm-6">
+                                            <a href="#" style="text-decoration: none;"><%=listGrMem[grmem].fullname%></a>
+                                          </div>
+                                          <div class="right_pro_usr col-sm-4">
+                                            <input type="hidden" id="val_status<%=mem%><%=grmem%>" value="<%=listGrMem[grmem].status%>">
+                                            <input type="hidden" id="val_id_gacc<%=mem%><%=grmem%>" value="<%=listGrMem[grmem].id%>">
+                                            <button type="button" id="btn_rm_mem<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-remove"></span>
+                                              <span>Hủy</span>
+                                            </button>
+                                            <button type="button" id="btn_acc_mem<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-plus"></span>
+                                              <span>Nhận</span>
+                                            </button>
+                                            <button type="button" id="btn_cancel_invite<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-remove"></span>
+                                              <span>Mời</span>
+                                            </button>
+                                          </div>
+                                        </li>
+                                      <%}%>
+
+                                    <%}%>
+
+                                  </ul>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                         </li>
+                       <%}else{%>
+                         <li id="li_listAdm<%=mem%>">
+                           <div class="col-sm-2 left-gr">
+                             <div class="pr_gr_img_box">
+                               <img src="./images/pri-icon.png" alt="icon-group">
+                             </div>
+                           </div>
+                           <div class="col-sm-6 middle-gr">
+                             <a href="#" data-toggle="modal" data-target="#myModal<%=mem%>"
+                             style="text-decoration:none;">
+                               <%=listAdm[mem].group_name%></a>
+                           </div>
+                           <div class="col-sm-4 right-gr">
+                             <input type="hidden" id="idRmAdmGr<%=mem%>" value="<%=listAdm[mem].id%>">
+                             <button type="button" id="btnAdmGrRm<%=mem%>">
+                               <span>Hủy nhóm</span>
+                             </button>
+                           </div>
+                           <div class="modal fade" id="myModal<%=mem%>" role="dialog">
+                            <div class="modal-dialog">
+
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title"><%=listAdm[mem].group_name%></h4>
+                                  <span></span><span id="mess<%=mem%>"></span>
+                                </div>
+                                <div class="modal-body">
+                                  <ul>
+                                    <%for(let grmem=0; grmem<listGrMem.length; grmem++){%>
+                                      <%if(listGrMem[grmem].id_group ==listAdm[mem].id){%>
+                                        <li id="li_gr<%=mem%><%=grmem%>">
+                                          <div class="left_pro_usr col-sm-2">
+                                            <div class="img_pro_box">
+                                              <img src="./images/userth.png" alt="icon-user">
+                                            </div>
+                                          </div>
+                                          <div class="midle_pro_usr col-sm-6">
+                                            <a href="#" style="text-decoration: none;"><%=listGrMem[grmem].fullname%></a>
+                                          </div>
+                                          <div class="right_pro_usr col-sm-4">
+                                            <input type="hidden" id="val_status<%=mem%><%=grmem%>" value="<%=listGrMem[grmem].status%>">
+                                            <input type="hidden" id="val_id_gacc<%=mem%><%=grmem%>" value="<%=listGrMem[grmem].id%>">
+                                            <button type="button" id="btn_rm_mem<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-remove"></span>
+                                              <span>Hủy</span>
+                                            </button>
+                                            <button type="button" id="btn_acc_mem<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-plus"></span>
+                                              <span>Nhận</span>
+                                            </button>
+                                            <button type="button" id="btn_cancel_invite<%=mem%><%=grmem%>">
+                                              <span class="glyphicon glyphicon-remove"></span>
+                                              <span>Mời</span>
+                                            </button>
+                                          </div>
+                                        </li>
+                                      <%}%>
+
+                                    <%}%>
+
+                                  </ul>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                         </li>
+                       <%}%>
+
+                     <%}%>
+
+                   </ul>
+
+                 </div>
+               </div>
+             </div>
+             <div class="friend-profile col-sm-12">
+               <div class="box-search-friend" id="box_search_friend">
+                 <div class="title-icon-friend" id="title_icon_friend" style="margin-top:7px;">
+                   <button type="button" class="btn btn-default" id="btn_click_form_pro">
+                     <span style="font-weight:bold; font-size:16px;" class="glyphicon glyphicon-search"></span>
+                     <span style="font-weight:bold; font-size:16px;" class="">Bạn bè</span>
+                   </button>
+                 </div>
+                 <div class="box-enter-search-friend" id="box_enter_search_friend" style="margin-top:7px;">
+                   <div class="input-group" >
+                     <div class="input-group-btn" >
+                       <button class="btn btn-default" id="not_search_friend" type="button">
+                         X
+                       </button>
+                     </div>
+                     <input type="text" class="form-control" id="val-search-friend" placeholder="Tìm kiếm bạn bè">
+                     <div class="input-group-btn" >
+                       <button class="btn btn-default" id="search-friend" type="button">
+                         Tìm kiếm
+                       </button>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="result-search-friend list-member" id="result_search_friend">
+                  <span style="font-size: 16; font-weight: bold;">Kết quả tìm kiếm</span>
+                  <span id="cancel_box_search" class="glyphicon glyphicon-remove"></span>
+                   <ul> </ul>
+                 </div>
+               </div>
+               <div class="box-list-friend list-member " id="box_list_friend">
+                 <input type="hidden" id="lenFriend" value="<%=myFriend.length%>">
+                 <ul>
+                   <%for(let friend=0; friend < myFriend.length; friend++){%>
+                     <li id="li_list_friend<%=friend%>">
+                       <div class="col-sm-2 left-gr">
+                         <div class="pr_gr_img_box">
+                           <img src="./images/user-icon.png" alt="icon-group">
+                         </div>
+                       </div>
+                       <div class="col-sm-6 middle-gr">
+                         <a href="#" style="text-decoration:none;"> <%=myFriend[friend].fullname%></a>
+                       </div>
+                       <div class="col-sm-4 right-gr">
+                         <input type="hidden" id="val_id_undo_friend<%=friend%>"
+                         value="<%=myFriend[friend].id_friend_ship%>">
+                          <button type="button" id="btn_undo_friend<%=friend%>">
+                            <span>Hủy kết bạn</span>
+                          </button>
+                     </li>
+                   <%}%>
+
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

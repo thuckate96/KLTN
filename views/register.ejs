@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Học nhóm - Trực tuyến</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Labs - Design Studio">
+	<meta name="keywords" content="lab, onepage, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		/*custom font*/
+		@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+		/*basic reset*/
+		* {margin: 0; padding: 0;}
+
+
+
+		body {
+			font-family: montserrat, arial, verdana;
+			height: 90%;
+			background:linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+		}
+		/*form styles*/
+		#msform {
+			width: 400px;
+			margin: 50px auto;
+			text-align: center;
+			position: relative;
+			padding-top: 60px;
+		}
+		#msform fieldset {
+			background: white;
+			border: 0 none;
+			border-radius: 3px;
+			box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+			padding: 20px 30px;
+			box-sizing: border-box;
+			width: 80%;
+			margin: 0 10%;
+
+			/*stacking fieldsets above each other*/
+			position: relative;
+		}
+		/*Hide all except first fieldset*/
+		#msform fieldset:not(:first-of-type) {
+			display: none;
+		}
+		/*inputs*/
+		#msform input, #msform textarea {
+			padding: 15px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin-bottom: 10px;
+			width: 100%;
+			box-sizing: border-box;
+			font-family: montserrat;
+			color: #2C3E50;
+			font-size: 13px;
+		}
+		/*buttons*/
+		#msform .action-button {
+			width: 100px;
+			background: #27AE60;
+			font-weight: bold;
+			color: white;
+			border: 0 none;
+			border-radius: 1px;
+			cursor: pointer;
+			padding: 10px 5px;
+			margin: 10px 5px;
+		}
+		#msform .action-button:hover, #msform .action-button:focus {
+			box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+		}
+		/*headings*/
+		.fs-title {
+			font-size: 15px;
+			text-transform: uppercase;
+			color: #2C3E50;
+			margin-bottom: 10px;
+		}
+		.fs-subtitle {
+			font-weight: normal;
+			font-size: 13px;
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#msform').submit(function(){
+				 $email = $('#email').val();
+				 $fullname = $('#fullname').val();
+				 $pass = $('#pass').val();
+				 $repass = $('#repass').val();
+				 $address = $('#address').val();
+
+				return validateEmpty($email,$fullname,$pass,$repass,$address)&&
+								validateEmail($email);
+			});
+
+			$("#repass").on("keyup", function(){
+				if($("#pass").val() == $("#repass").val()){
+					$('#message').html("Hợp lệ!").css('color','green');
+				}else{
+					$('#message').html("Không hợp lệ!").css('color', 'red');
+				}
+			});
+		});
+		function validateEmpty(email, fullname, pass, repass, address){
+			if($email=="" || $fullname==""||$pass==""||$repass==""||$address==""){
+				alert("Không để trống các trường!!!");
+				return false;
+			}else if($email=="undefined"|| $fullname=="undefined"||
+								$pass=="undefined"||$repass=="undefined"||$address=="undefined"){
+									alert("Không để trống các trường!!!");
+									return false;
+			}else return true;
+		}
+
+		function validateEmail(email){
+			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		  if(re.test(email) == false){
+			  alert("Email sai định dạng");
+			  return false;
+		  }
+		  else return true;
+		}
+	</script>
+
+</head>
+<body>
+	<% include header%>
+
+	<form action="register/handle" method="post" id="msform" class="form-horizontal">
+	  <fieldset>
+	    <h2 class="fs-title">Đăng ký thành viên</h2>
+	    <input type="text" id="email" name="email" placeholder="Email" />
+      <input type="text" id="fullname" name="fullname" placeholder="Họ và tên" />
+	    <input type="password" id="pass" name="pass" placeholder="Mật khẩu" />
+      <input type="password" id="repass" name="repass" placeholder="Nhập lại mật khẩu" />
+			<span id="message"></span>
+      <input type="text" id="address" name="address" placeholder="Địa chỉ" />
+	    <input type="submit"  class="next action-button" value="Đăng ký" />
+			<br>
+			<p>Đã có tài khoản ? <a href="login">Đăng nhập </a></p>
+	  </fieldset>
+	</form>
+</body>
+</html>
