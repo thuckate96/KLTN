@@ -15,7 +15,7 @@ $(document).ready(function(){
       {
         val_search: $("#val_search_friend_chat").val()
       }, (data)=>{
-        alert(data.listFriendChat.length)
+        console.log(data.listFriendChat.length)
       });
     }else{
       $("#val_search_friend_chat").attr("placeholder", "Bạn cần nhập từ khóa");
@@ -24,7 +24,11 @@ $(document).ready(function(){
 
   for(let i = 0; i < $("#lenListFriendBoxChat").val(); i++){
     $("#show_friend_box_chat"+i).click(function(){
-
+      console.log("Khong biet: "+$("#id_user_self").val());
+      socket.emit("message-room", {
+        myID: $("#id_user_self").val(),
+        friendID: $("#friend_chat_id"+i).val()
+      });
       $.post("/message/infoFriendBoxChat",
       {
         id_friend_chat: $("#friend_chat_id"+i).val()
@@ -118,9 +122,9 @@ $(document).ready(function(){
         '</div>'+
       "");
     }
-
+    
   });
-  console.log($("#id_user_seft").val());
+  console.log("no biet: "+$("#id_user_self").val());
   $("#message_box").html("<h2> Chat với bạn bè </h2>");
 });
 

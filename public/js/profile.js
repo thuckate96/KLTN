@@ -66,7 +66,9 @@ $('document').ready(function(){
        $("#btn_acc_mem"+i+""+j).click(function(){
          $.post("/accessMember",
          {
-           idAcc: $("#val_id_gacc"+i+""+j).val()
+           idAcc: $("#val_id_gacc"+i+""+j).val(),
+           id_user: $("#id_user_ingr"+i+""+j).val(),
+           groupName: $("#gr_name"+i+""+j).val(),
          },(data)=>{
            if(data=="success"){
              $("#btn_acc_mem"+i+""+j).hide();
@@ -81,7 +83,9 @@ $('document').ready(function(){
        $("#btn_rm_mem"+i+""+j).click(function(){
          $.post("/removeMember",
          {
-           idAcc: $("#val_id_gacc"+i+""+j).val()
+           idAcc: $("#val_id_gacc"+i+""+j).val(),
+           groupName: $("#gr_name"+i+""+j).val(),
+           id_user: $("#id_user_ingr"+i+""+j).val()
          },(data)=>{
            if(data=="success"){
              $("#mess"+i).html("Loại bỏ thành công").css('color', 'green');

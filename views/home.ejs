@@ -8,10 +8,8 @@
     <!-- <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script type="text/javascript" src="bootstrap.min.js"> </script>
     <script type="text/javascript" src="jquery.min.js"> </script> -->
-    <script type="text/javascript" src="./js/home.js"> </script>
-
-
-    </script>
+    <script type="text/javascript" src="socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./js/home.js"> </script> </script>
 
     <title>home</title>
   </head>
@@ -19,6 +17,7 @@
   </body>
     <div class="mainHomeBody">
       <% include header%>
+
       <div id="box-search" class="box-search">
         <div class="box-search-result">
           <span style="font-size: 16px;" class="glyphicon glyphicon-search"></span>
@@ -31,7 +30,13 @@
           </div>
         </div>
       </div>
-
+      <input type="hidden" id="id_user" value="<%=idUser%>">
+      <input type="hidden" id="my_name" value="<%=name%>">
+      <input type="hidden" id="lenNotifi" value="<%=listNotification.length%>">
+      <%for(let notifi = 0; notifi < listNotification.length; notifi++){%>
+        <input type="hidden" id="info_notifi<%=notifi%>"
+        value="<%=listNotification[notifi].info_notification%>">
+      <%}%>
       <div id="list_group" class="list-group">
         <div class="box">
           <button type="button" class="btn btn-primary" id="addNewGr">
@@ -40,7 +45,8 @@
           </button>
           <div id="box_add_group" class="box-add-group">
             <div class="form-gr">
-              <input type="text" placeholder="Nhập tên nhóm" class="form-control" id="nameGR" value="">
+              <input type="text" placeholder="Nhập tên nhóm" class="form-control"
+              id="nameGR" value="">
               <select class="form-control" id="typeGroup">
                 <option value="1">Nhóm công khai</option>
                 <option value="0">Nhóm kín</option>
@@ -56,16 +62,18 @@
             </div>
           </div>
       		<ul>
+            <input type="hidden" id="lenListGr" value="<%=listGroup.length%>">
             <%for(let group = 0; group < listGroup.length; group++){%>
               <%if(listGroup[group].is_public == 1){%>
-                <li>
+                <li >
           				<div class="col-sm-4 box-icon">
           					<div class="box-img">
           						<img src="./images/pub-icon2.png">
           					</div>
           				</div>
           				<div class="col-sm-8 box-name">
-          					<a href="group?id=<%=listGroup[group].id%>">
+                    <input type="hidden" id="group_id<%=group%>" value="<%=listGroup[group].id%>">
+          					<a id="group_redirect<%=group%>" href="group?id=<%=listGroup[group].id%>">
                       <%=listGroup[group].group_name%>
                     </a>
           				</div>
@@ -78,7 +86,8 @@
           					</div>
           				</div>
           				<div class="col-sm-8 box-name">
-          					<a href="group?id=<%=listGroup[group].id%>">
+                    <input type="hidden" id="group_id<%=group%>" value="<%=listGroup[group].id%>">
+          					<a id="group_redirect<%=group%>" href="group?id=<%=listGroup[group].id%>">
                       <%=listGroup[group].group_name%>
                     </a>
           				</div>
@@ -89,6 +98,7 @@
 
       	</div>
       </div>
+      
     </div>
   </body>
 </html>

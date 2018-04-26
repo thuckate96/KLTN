@@ -6,6 +6,7 @@ var morgan = require("morgan");
 var path = require("path");
 var port = process.env.PORT|| 3000;
 var session = require("express-session");
+ 
 // var db = require("./models/mydatabase.js")
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,9 +15,9 @@ app.use(express.static('public'));
 app.set('trust proxy', 1);
 app.use(session({
   secret: "gdfghoaigfdjptertaertarpfjdg",
-  resave: false,
+  resave: true,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }));
 
 app.set("view engine", "ejs");

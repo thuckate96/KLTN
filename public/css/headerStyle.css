@@ -42,7 +42,8 @@
   display: block;
 }
 .nav-page ul li a.active{
-  color: red;
+  color: white;
+  font-weight: bold;
 }
 .nav-page ul li a:HOVER:NOT(.active){
   color: blue;
@@ -64,4 +65,84 @@
 }
 .dropdown:hover .dropdown-content{
   display: block;
+}
+
+.notification{
+  width: 335px;
+
+  height: 610px;
+  overflow: auto;
+  background-color: white;
+  position: absolute;
+  z-index: 200;
+  right: 10px;
+
+}
+.notifi-title{
+  width: 100%;
+  height: 40px;
+  background-color: rgba(0, 150, 136, 0.4);
+  color: #333;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 20px;
+}
+.show-notifi {
+  width: 100%;
+  height: 90  %;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+.show-notifi li{
+  width: 100%;
+  min-height: 50px;
+  border-bottom: 1px solid rgb(225, 227, 232);
+}
+.show-notifi li:hover{
+  background-color: rgb(225, 227, 232);
+}
+.notification .show-notifi li.active{
+  background-color: rgb(225, 227, 232);
+}
+.notification .show-notifi li a{
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.activity{
+  width: 360px;
+  height: 610px;
+  overflow: auto;
+  background-color: white;
+  position: absolute;
+  z-index: 200;
+  left: 0;
+}
+.show-activity{
+  width: 100%;
+  height: 90%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+.show-activity li{
+  width: 100%;
+  min-height: 50px;
+  border-bottom: 1px solid rgb(225, 227, 232);
+}
+
+.show-activity li:hover{
+  background-color: rgb(225, 227, 232);
+}
+.show-activity li a{
+  display: block;
+  color: #333;
+  text-decoration: none;
+  padding: 8px 16px;
 }

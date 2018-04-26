@@ -30,16 +30,17 @@ router.post("/partnerInfo", (req, res)=>{
        let sql = "SELECT uei.*, u.fullname "+
                 "FROM user_exchanged_info uei JOIN user u "+
                 "ON uei.id_user_a = u.id "+
-                "WHERE (id_user_a='"+session.id+"' AND id_user_b = '"+id_partner+"') "+
-                "or (id_user_a='"+id_partner+"' AND id_user_b='"+session.id+"') "+
+                "WHERE (id_user_a='"+req.session.uid+"' AND id_user_b = '"+id_partner+"') "+
+                "or (id_user_a='"+id_partner+"' AND id_user_b='"+req.session.uid+"') "+
                 " order by uei.id asc";
         con.query(sql, (err, listExchangeInfo)=>{
           if(err){
             console.log(" error to list exchange info ");
             return ;
           }else{
+
             res.json({
-              
+
               infoPartner: infoPartner[0],
               listExchangeInfo: listExchangeInfo
             });
@@ -60,13 +61,13 @@ router.post("/friendChat", (req, res)=>{
             " FROM user u JOIN user_is_friend uif "+
             " ON u.id = uif.id_user_a "+
             " WHERE status =2 and u.fullname like '%"+val_search+"%' "+
-            " and u.id != "+session.id+" and uif.id_user_b = "+session.id+" "+
+            " and u.id != "+req.session.uid+" and uif.id_user_b = "+req.session.uid+" "+
             " UNION "+
             " SELECT distinct u.id, u.fullname, uif.status "+
             " FROM user u JOIN user_is_friend uif "+
             " ON u.id = uif.id_user_b "+
             " WHERE status =2 and u.fullname like '%"+val_search+"%' "+
-            " and u.id != "+session.id+" AND id_user_a= "+session.id+" ";
+            " and u.id != "+req.session.uid+" AND id_user_a= "+req.session.uid+" ";
       con.query(sqlViewFriendChat, (err)=>{
         if(err){
           console.log("error to create view friend chat");
@@ -82,7 +83,7 @@ router.post("/friendChat", (req, res)=>{
               res.json({
                 status: "success",
                 listFriendChat: listFriendChat
-              })
+              });
             }
           })
         }
@@ -94,9 +95,9 @@ router.post("/infoFriendBoxChat", (req, res)=>{
   let sqlMessage = "SELECT ucu.*, u.fullname "+
                   "FROM user_chat_user ucu  JOIN user u "+
                   "on ucu.id_user_a = u.id "+
-                  "WHERE (ucu.id_user_a = '"+session.id+"' "+
+                  "WHERE (ucu.id_user_a = '"+req.session.uid+"' "+
                   " AND ucu.id_user_b = '"+req.body.id_friend_chat+"') "+
-                  " OR (ucu.id_user_b = '"+session.id+"' "+
+                  " OR (ucu.id_user_b = '"+req.session.uid+"' "+
                   " AND ucu.id_user_a = '"+req.body.id_friend_chat+"') order by ucu.id asc";
   con.query(sqlMessage, (err, listMessage)=>{
     if(err){
@@ -112,7 +113,7 @@ router.post("/infoFriendBoxChat", (req, res)=>{
           res.json({
             listMessage: listMessage,
             infoPartner: infoPartner[0],
-            id_myself: session.id
+            id_myself: req.session.uid
           })
         }
       });
@@ -120,7 +121,7 @@ router.post("/infoFriendBoxChat", (req, res)=>{
   });
 })
 router.get("/", (req, res)=>{
-  if(session.email){
+  if(req.session.email){
     con.query("DROP VIEW IF EXISTS hocnhom_tt.friend_box_chat ", (err)=>{
       if(err){
         console.log("error to drop view friend_box_chat ");
@@ -130,12 +131,12 @@ router.get("/", (req, res)=>{
         " SELECT distinct u.id, u.fullname, uif.status  "+
         " FROM user u JOIN user_is_friend uif  "+
         " ON u.id = uif.id_user_a  "+
-        " WHERE status =2 and uif.id_user_b = "+session.id+" "+
+        " WHERE status =2 and uif.id_user_b = "+req.session.uid+" "+
         " UNION "+
         " SELECT distinct u.id, u.fullname, uif.status "+
         " FROM user u JOIN user_is_friend uif "+
         " ON u.id = uif.id_user_b "+
-        " WHERE status =2   AND id_user_a= "+session.id+" ";
+        " WHERE status =2   AND id_user_a= "+req.session.uid+" ";
         con.query(sqlCreateViewFriendBoxChat, (err)=>{
           if(err){
             console.log("error to create view friend box chat ");
@@ -149,8 +150,8 @@ router.get("/", (req, res)=>{
                 return ;
               }else {
                 res.render("message", {
-                  id_user: session.id,
-                  name: session.fullname,
+                  id_user: req.session.uid,
+                  name: req.session.fullname,
                   listFriendBoxChat: listFriendBoxChat
                 });
               }

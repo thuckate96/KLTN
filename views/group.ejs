@@ -55,6 +55,7 @@
             </div>
           </div>
           <input type="hidden" id="lenListMemg" value="<%=listMemg.length%>">
+          <input type="hidden" id="name_user" value="<%=name%>">
           <ul class="list-member">
             <li>
               <div class="icon-member">
@@ -82,41 +83,7 @@
             <%}%>
           </ul>
         </div>
-        <div id="box_chat_child" class="box-chat-child">
-
-          <!-- <div class="name-child-chat">
-            <a href="#">Vi Văn Thức</a>
-            <a href="#" style="float: right; margin-right: 2px;" id="rm_box_child_chat">
-              <span class="glyphicon glyphicon-remove"></span>
-            </a>
-          </div>
-          <div class="content-child-chat">
-            <ul>
-              <li class="container darker">
-                <img src="./images/user.png" alt="Avatar" class="right" style="width:100%;">
-                <p>xin chao tat ca cac ban, minh ten la vi van thuc</p>
-                <span class="time-left">11:01</span>
-              </li>
-              <li class="container">
-                <img src="./images/userth.png" alt="Avatar" style="width:100%;">
-                <p>Chao cc</p>
-                <span class="time-right">11:00</span>
-              </li>
-            </ul>
-          </div>
-          <div class="send-child-chat">
-            <div class="input-group" >
-              <textarea name="name"class="form-control"
-              placeholder="Nhập nội dung" rows="1" cols="20"></textarea>
-
-              <div class="input-group-btn" >
-                <button class="btn btn-default" id="search" type="button">
-                  Gửi
-                </button>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        <div id="box_chat_child" class="box-chat-child"> </div>
 
 
         <div class="content-group">
@@ -136,30 +103,308 @@
            <input type="hidden" id="lenListToppic" value="<%=listTopic.length%>">
            <input type="hidden" id="lenListExer" value="<%=listExer.length%>">
             <input type="hidden" id="rs_UNG" value="<%=resultUNG%>">
-
+            <input type="hidden" id="lenListMemWork" value="<%=listMemWork.length%>">
              <%for(var toppic=0; toppic<listTopic.length; toppic++){%>
 
                <div class="list-toppic">
                  <div class="name-toppic">
-                   <a href="#"><%=listTopic[toppic].topic_name%> </a>
+                   <a id="btn_edit_toppic<%=toppic%>" href="#"><%=listTopic[toppic].topic_name%> </a>
+                 </div>
+                 <div id="box_edit_toppic<%=toppic%>" class="">
+                   <input type="hidden" id="id_toppic_edit<%=toppic%>"
+                   value="<%=listTopic[toppic].id%>">
+                   <div  class="box-edit-toppic  form-edit">
+                     <input type="text" class="form-control" id="toppic_edit_name<%=toppic%>"
+                      placeholder="sửa chủ đề" value="">
+                   </div>
+                   <div  class="box-edit-toppic">
+                     <input type="button"  id="btn_send_edit_toppic<%=toppic%>"
+                     class="btn btn-default" value="sửa">
+                   </div>
+                   <div  class="box-edit-toppic">
+                     <a id="un_edit_toppic<%=toppic%>" href="#"  >
+                       <span class="glyphicon glyphicon-remove"></span>
+                     </a>
+                   </div>
                  </div>
                  <ul>
                    <%for(let exer=0; exer < listExer.length; exer++){%>
 
                      <%if(listTopic[toppic].id == listExer[exer].id_toppic){ %>
 
-                       <li>
-                         <a href="#" data-toggle="modal" data-target="#myModal<%=toppic%><%=exer%>">
+                       <li id="exe_list<%=toppic%><%=exer%>">
+                         <a href="#" data-toggle="modal" id="exer_name_list<%=toppic%><%=exer%>"
+                          data-target="#myModal<%=toppic%><%=exer%>">
                            <%=listExer[exer].exercise_name%>
                          </a>
+
                          <div class="modal fade" id="myModal<%=toppic%><%=exer%>" role="dialog">
-                         <div class="modal-dialog"> 
+                         <div class="modal-dialog">
                            <!-- Modal content-->
                            <div class="modal-content">
                              <div class="modal-header">
                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                               <h4 class="modal-title"><%=listExer[exer].exercise_name%></h4>
-                             </div>
+                               <h4 class="modal-title" id="name_exer_edit<%=toppic%><%=exer%>">
+                                 <%=listExer[exer].exercise_name%></h4>
+
+                               <div id="box_edit_exercise<%=toppic%><%=exer%>" class="">
+                                 <input type="hidden" id="id_exer_edit<%=toppic%><%=exer%>"
+                                 value="<%=listExer[exer].id%>">
+                                 <div  class="box-edit-exer  form-edit-exer">
+                                   <input type="text" class="form-control"
+                                   id="exer_edit_name<%=toppic%><%=exer%>"
+                                    placeholder="sửa tên bài tập" value="">
+                                 </div>
+                                 <div  class="box-edit-exer">
+                                   <input type="button" id="btn_send_edit_exer<%=toppic%><%=exer%>"
+                                   class="btn btn-default" value="sửa">
+                                 </div>
+                                 <div  class="box-edit-exer">
+
+                                   <span id="un_edit_exer_name<%=toppic%><%=exer%>"
+                                   class="glyphicon glyphicon-remove">
+                                   </span>
+                                 </div>
+                               </div>
+           <div class="box-activities">
+             <div id="box_option_activity<%=toppic%><%=exer%>" class="box-option-activity">
+               <div id="honors_div<%=toppic%><%=exer%>" class="">
+                 <p style="color: green;"
+                    class="microsoft marquee">
+                    <%=listExer[exer].honors%>
+                 </p>
+               </div>
+               <div id="remind_div<%=toppic%><%=exer%>" class="">
+                 <p style="color: red;"
+                    class="microsoft remind_marquee">
+                    <%=listExer[exer].remind%>
+                 </p>
+               </div>
+               <ul >
+                 <li id="li_time_activity<%=toppic%><%=exer%>" class="active">
+                   Thời gian học nhóm
+                 </li>
+                 <li id="li_exer_activity<%=toppic%><%=exer%>">
+                   Bài tập
+                 </li>
+                 <li id="li_evalua_activity<%=toppic%><%=exer%>">
+                   Đánh giá
+                 </li>
+               </ul>
+             </div>
+             <div id="box_time_learn<%=toppic%><%=exer%>" class=" box-time-learn">
+               <span id="msg_success_schedule<%=toppic%><%=exer%>"></span>
+               <div id="box_manager_time<%=toppic%><%=exer%>" class="box-manager-time">
+
+                 <table style="" class="table">
+                   <tbody>
+                     <tr>
+                       <td class="col-sm-3">
+                         <input class="form-control" type="date"
+                         id="start_date<%=toppic%><%=exer%>" value="">
+                       </td>
+                       <td class="col-sm-2">
+                         <input type="text" class="form-control"
+                         id="start_time<%=toppic%><%=exer%>" value="" placeholder="vd:09:05">
+                       </td>
+                       <td class="col-sm-1">-></td>
+                       <td class="col-sm-3">
+                         <input class="form-control" type="date"
+                          id="finish_date<%=toppic%><%=exer%>" value="">
+                       </td>
+                       <td class="col-sm-2">
+                         <input type="text" class="form-control"
+                         id="finish_time<%=toppic%><%=exer%>" value="" placeholder="vd:09:30">
+                       </td>
+                       <td class="col-sm-1">
+                         <input type="button" class="btn btn-default"
+                         id="btn_create_schedule<%=toppic%><%=exer%>" value="Tạo lịch">
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+               <div id="box_display_time<%=toppic%><%=exer%>" class="box-display-time">
+                 <div id="time_schedule<%=toppic%><%=exer%>" class="time-schedule">
+                   <table class="table"  >
+                     <thead>
+                       <tr>
+                         <th>Ngày</th>
+                         <th>Giờ</th>
+                         <th>-></th>
+                         <th>Ngày</th>
+                         <th>Giờ</th>
+                         <th>Hủy</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                     </tbody>
+                   </table>
+                 </div>
+               </div>
+             </div>
+             <div id="box_manager_work<%=toppic%><%=exer%>" class="box-manager-exer">
+                  <span id="msg_success_work<%=toppic%><%=exer%>"></span>
+                 <div id="admin_add_work<%=toppic%><%=exer%>" class="">
+                   <div id="btn_click_add<%=toppic%><%=exer%>" class="btn-click-add">
+                     <input type="text" id="add_work<%=toppic%><%=exer%>"
+                        placeholder="Thêm công việc"  value="">
+                   </div>
+                   <div id="form_add_exer_app<%=toppic%><%=exer%>" class="form-add-exer-app">
+                     <textarea id="work_name<%=toppic%><%=exer%>" rows="5" cols="38"
+                     placeholder="Nhập công việc"></textarea>
+                     <table class="table" style="width: 100%; position:relative; font-size: 13px;">
+                       <tbody>
+
+                         <tr>
+                           <td>Đến:</td>
+                           <td id="td_select_member<%=toppic%><%=exer%>">
+
+                           </td>
+                           <td>
+                             <input type="hidden" id="work_for_mem<%=toppic%><%=exer%>" value="">
+                             <select class="form-control" style="width: 15px;"
+                              id="select_member<%=toppic%><%=exer%>">
+                              <%for(let mem_work = 0; mem_work < listMemWork.length; mem_work++){%>
+
+                                <option value="<%=listMemWork[mem_work].id%>">
+                                  <%=listMemWork[mem_work].fullname%>
+                                </option>
+                              <%}%>
+                             </select>
+                           </td>
+                         </tr>
+                         <tr>
+                           <td>Thời hạn</td>
+                           <td><input class="form-control" type="date"
+                             id="time_bound<%=toppic%><%=exer%>" value="">
+                           </td>
+                           <td>
+                           </td>
+                         </tr>
+                         <tr>
+                           <td></td>
+                           <td>
+                             <input type="button" class="btn btn-default"
+                             id="add_new_work<%=toppic%><%=exer%>" value="Thêm công việc">
+                             <input type="button" class="btn btn-default"
+                             id="un_add_work<%=toppic%><%=exer%>" value="Hủy">
+                           </td>
+                           <td></td>
+                         </tr>
+                       </tbody>
+                     </table>
+
+                   </div>
+                 </div>
+
+                 <div id="work_time_member<%=toppic%><%=exer%>" class="time-work">
+
+
+                 </div>
+               <div class="col-sm-12">
+
+               </div>
+             </div>
+             <div id="box_evaluation<%=toppic%><%=exer%>" class="box-evaluation ">
+               <span id="msg_success_evaluation<%=toppic%><%=exer%>"></span>
+               <table class="table" id="admin_evaluation<%=toppic%><%=exer%>">
+                 <tbody>
+                   <tr>
+                     <td>
+                       <textarea id="comment_member<%=toppic%><%=exer%>"
+                          placeholder="Nhận xét thành viên"
+                        class="form-control" rows="1" cols="35"></textarea>
+                     </td>
+                     <td>
+                       <select class="form-control"
+                        id="rank_member<%=toppic%><%=exer%>">
+                         <option value="-1">Xếp loại</option>
+                         <option value="A+">A+</option>
+                         <option value="A">A</option>
+                         <option value="B+">B+</option>
+                         <option value="B">B</option>
+                         <option value="C+">C+</option>
+                         <option value="C">C</option>
+                         <option value="D+">D+</option>
+                         <option value="D">D</option>
+                         <option value="F">F</option>
+                       </select>
+                     </td>
+                     <td>
+                       <select class="form-control"
+                        id="valuation_mem<%=toppic%><%=exer%>">
+                        <option value="-1">Thành viên</option>
+                        <%for(let mem_work = 0; mem_work < listMemWork.length; mem_work++){%>
+                          <option value="<%=listMemWork[mem_work].id%>">
+                            <%=listMemWork[mem_work].fullname%>
+                          </option>
+                        <%}%>
+
+                       </select>
+                     </td>
+                     <td>
+                       <input type="button" class="form-control"
+                         id="btn_comment<%=toppic%><%=exer%>"
+                        value="Nhận xét">
+                     </td>
+                   </tr>
+                 </tbody>
+                 <table class="table">
+                   <tbody>
+                     <tr>
+                       <td>
+                         <select class="form-control" style="margin-top: 10px;"
+                          id="honors_mem<%=toppic%><%=exer%>">
+                          <option value="-1">Vinh danh</option>
+                          <%for(let mem_work = 0; mem_work < listMemWork.length; mem_work++){%>
+                            <option value="<%=listMemWork[mem_work].fullname%>">
+                              <%=listMemWork[mem_work].fullname%>
+                            </option>
+                          <%}%>
+                          <option value="_10">
+                            Hủy
+                          </option>
+                         </select>
+                       </td>
+                       <td>
+                         <select class="form-control" style="margin-top: 10px;"
+                          id="remind_mem<%=toppic%><%=exer%>">
+                          <option value="-1">Nhắc nhở</option>
+                          <%for(let mem_work = 0; mem_work < listMemWork.length; mem_work++){%>
+                            <option value="<%=listMemWork[mem_work].fullname%>">
+                              <%=listMemWork[mem_work].fullname%>
+                            </option>
+                          <%}%>
+                          <option value="_10">
+                            Hủy
+                          </option>
+                         </select>
+                       </td>
+                     </tr>
+                   </tbody>
+                 </table>
+               </table>
+               <div id="list_valuation<%=toppic%><%=exer%>" class="">
+
+               </div>
+             </div>
+             <div id="add_attachment<%=toppic%><%=exer%>" class="add-attachment ">
+               <span id="mess_att<%=toppic%><%=exer%>"></span>
+               <div id="form_add_attachment<%=toppic%><%=exer%>" class="">
+                 <span style="color: #415144; font-weight:bold;font-size: 16px;">
+                  File đính kèm</span>
+
+                 <input type="file"  id="file_upload<%=toppic%><%=exer%>" value="">
+                 <input type="submit" id="btn_fileupload<%=toppic%><%=exer%>" value="Đính kèm">
+
+               </div>
+               <div id="display_file_attachment<%=toppic%><%=exer%>" class="">
+                 
+               </div>
+             </div>
+             </div>
+           </div>
                              <div id="modal_body_discuss<%=toppic%><%=exer%>" class="modal-body">
                                <%for(let com=0; com < listComm.length; com++){%>
                                  <%if(listExer[exer].id == listComm[com].id_exercise){%>
@@ -167,13 +412,13 @@
                                      <div class="container">
                                       <img src="./images/user.png" alt="Avatar" style="width:100%;">
                                       <p><%=listComm[com].discuss%></p>
-                                      <span class="time-right"><%=name%> (11:00)</span>
+                                      <span class="time-right"><%=name%> (<%=listComm[com].time%>)</span>
                                      </div>
                                    <%}else{%>
                                      <div class="container darker">
                                       <img src="./images/userth.png" alt="Avatar" class="right" style="width:100%;">
                                       <p><%=listComm[com].discuss%></p>
-                                      <span class="time-left"><%=listComm[com].fullname%> (12:00)</span>
+                                      <span class="time-left"><%=listComm[com].fullname%> (<%=listComm[com].time%>)</span>
                                      </div>
                                    <%}%>
                                  <%}%>
@@ -190,6 +435,7 @@
                                     rows="2" cols="75"></textarea>
                                   <input type="hidden" id="val_gid<%=toppic%><%=exer%>"
                                    value="<%=listTopic[toppic].id%>">
+                                   <input type="hidden" id="name_user<%=toppic%><%=exer%>" value="<%=name%>">
                                    <input type="hidden" id="val_eid<%=toppic%><%=exer%>"
                                   value="<%=listExer[exer].id%>">
                                   <button style="margin-top:5px;" type="button"
@@ -198,7 +444,17 @@
                                   </button>
                                 </div>
                                 <div style="clear: both; float: left;" class="">
-                                  <span class="glyphicon glyphicon-paperclip"></span>
+                                  <span style="float:left;" id="ms_file_discuss<%=toppic%><%=exer%>">
+                                  </span>
+                                  <br>
+                                  <span style="margin-top: 5px; float: left; color: #415144; font-weight:bold;font-size: 16px;"
+                                  >Đính kèm file</span>
+                                  <br>
+                                  <input style="float: left; clear: both;" type="file"
+                                  id="file_diss<%=toppic%><%=exer%>" value="">
+                                  <br>
+                                  <input style="float: left;" type="button"
+                                  id="btn_file_diss<%=toppic%><%=exer%>" value="Đính kèm">
                                 </div>
                              </div>
                            </div>
@@ -252,8 +508,9 @@
         </div>
       </div>
       <input type="hidden" id="id_of_group" value="<%=id_group%>">
+      <input type="hidden" id="name_of_group" value="<%=group_name%>">
     </div>
 
   </body>
-
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 </html>
