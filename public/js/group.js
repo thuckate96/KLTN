@@ -91,7 +91,7 @@ $(document).ready(function(){
           id_group: $('#id_group').val()
         },
         function(data){
-          if(data=="success"){
+          if(data.message=="success"){
             $('#messageAddToppic').html("Thêm chủ đề thành công").css('color', 'green');
             setTimeout(()=>{
               $('#messageAddToppic').html("");
@@ -144,15 +144,32 @@ $(document).ready(function(){
         $.post("/addExercise",
           {
             name_exercise: $("#exercise_name"+i).val(),
-            id_toppic: $("#toppic_id"+i).val()
+            id_toppic: $("#toppic_id"+i).val(),
+            toppic_name: $("#toppic_name"+i).val(),
+            id_group: $("#id_group").val()
           },function(data){
+
             if(data.status=="success"){
+              $("#activity_box ul").append(""+
+              '<li>'+
+                '<a class="mainTarget" href="#">'+data.name+'</a>'+
+                '<span class="content_activi"> trong </span>'+
+                '<a class="mainTarget" href="#">'+data.toppic_name+'</a>'+
+                '<br>'+
+                 '<span class="content_activi">'+
+                  data.activity+
+                 '</span>'+
+              '</li>'+
+              "");
+
               $("#exe-box"+i).hide();
               $("#exe_btn"+i).show();
               $("#msg_add_toppic"+i).html("<span class='glyphicon glyphicon-ok'></span><br>").css('color','green');
               setTimeout(function(){
                 $("#msg_add_toppic"+i).html("");
               },2000);
+
+
             }
         });
       }else{
@@ -163,6 +180,20 @@ $(document).ready(function(){
 
 
   socket.on("ServerDiscussHanle", (data)=>{
+    let binhluan = "Bình luận: "+data.discuss;
+    $("#activity_box ul").append(""+
+    '<li>'+
+      '<a class="mainTarget" href="#">'+data.name_user+'</a>'+
+      '<span class="content_activi"> trong </span>'+
+      '  <a class="mainTarget" href="#">'+data.exercise_name+'</a>'+
+        '<span class="content_activi"> của </span>'+
+      '<a class="mainTarget" href="#">'+data.toppic_name+'</a>'+
+      '<br>'+
+       '<span class="content_activi">'+
+        binhluan+
+       '</span>'+
+    '</li>'+
+    "");
     let date = new Date();
     if(data.id_user == $("#id_user").val()){
       $("#modal_body_discuss"+data.i_loop1+""+data.j_loop2).append(""+
@@ -446,8 +477,6 @@ $(document).ready(function(){
         socket.emit("discuss-room", {
           discuss_room_id: "diss"+i+""+j
         });
-
-
       });
     }
   }
@@ -460,6 +489,9 @@ $(document).ready(function(){
             id_user: $("#id_user").val(),
             id_exercise: $("#val_eid"+i+""+j).val(),
             name_user: $("#name_user"+i+""+j).val(),
+            id_group: $("#id_group").val(),
+            toppic_name: $("#toppic_name"+i).val(),
+            exercise_name: $("#exercise_name_hidden"+i+""+j).val(),
             i_loop1: i,
             j_loop2: j
           })
@@ -903,9 +935,25 @@ $(document).ready(function(){
                 start_time: $("#start_time"+i+""+j).val(),
                 finish_date: $("#finish_date"+i+""+j).val(),
                 finish_time: $("#finish_time"+i+""+j).val(),
-                id_exer: $("#id_exer_edit"+i+""+j).val()
+                id_exer: $("#id_exer_edit"+i+""+j).val(),
+                id_group: $("#id_group").val(),
+                exercise_name: $("#exercise_name_hidden"+i+""+j).val(),
+                toppic_name: $("#toppic_name"+i).val()
               }, (data)=>{
-                if(data == "success"){
+                if(data.status=="success"){
+                  $("#activity_box ul").append(""+
+                  '<li>'+
+                    '<a class="mainTarget" href="#">'+data.name+'</a>'+
+                    '<span class="content_activi"> trong </span>'+
+                    '  <a class="mainTarget" href="#">'+data.exercise_name+'</a>'+
+                      '<span class="content_activi"> của </span>'+
+                    '<a class="mainTarget" href="#">'+data.toppic_name+'</a>'+
+                    '<br>'+
+                     '<span class="content_activi">'+
+                      data.activity+
+                     '</span>'+
+                  '</li>'+
+                  "");
                   $("#msg_success_schedule"+i+""+j).html("Thành công").css("color", "green");
                   setTimeout(()=>{
                     $('#msg_success_schedule'+i+''+j).html("");
@@ -913,6 +961,7 @@ $(document).ready(function(){
                     $("#start_time"+i+""+j).val("");
                     $("#finish_date"+i+""+j).val("");
                     $("#finish_time"+i+""+j).val("");
+
                   }, 2000);
                   $("#time_schedule"+i+""+j+" table tbody").append(""+
                   '<tr>'+
@@ -1033,9 +1082,25 @@ $(document).ready(function(){
               work_name: $work_name,
               work_mem: $work_mem,
               work_time: $work_time,
-              id_exer: $id_exer
+              id_exer: $id_exer,
+              id_group: $("#id_group").val(),
+              toppic_name: $("#toppic_name"+i).val(),
+              exercise_name: $("#exercise_name_hidden"+i+""+j).val()
             }, (data)=>{
-              if(data == "success"){
+              if(data.status == "success"){
+                $("#activity_box ul").append(""+
+                '<li>'+
+                  '<a class="mainTarget" href="#">'+data.name+'</a>'+
+                  '<span class="content_activi"> trong </span>'+
+                  '  <a class="mainTarget" href="#">'+data.exercise_name+'</a>'+
+                    '<span class="content_activi"> của </span>'+
+                  '<a class="mainTarget" href="#">'+data.toppic_name+'</a>'+
+                  '<br>'+
+                   '<span class="content_activi">'+
+                    data.activity+
+                   '</span>'+
+                '</li>'+
+                "");
                 $("#msg_success_work"+i+""+j).html("Thành công!").css('color', "green");
                 setTimeout(()=>{
                     $("#msg_success_work"+i+""+j).html("");
@@ -1059,7 +1124,7 @@ $(document).ready(function(){
                 $("#work_name"+i+""+j).val("");
                 $("#work_for_mem"+i+""+j).val("");
                 $("#time_bound"+i+""+j).val("");
-                 
+
               }else{
                 $("#msg_success_work"+i+""+j).html("Thêm công việc thất bại").css('color', "red");
                 setTimeout(()=>{
@@ -1091,9 +1156,25 @@ $(document).ready(function(){
                   comment: $("#comment_member"+i+""+j).val(),
                   rank: $("#rank_member"+i+""+j).val(),
                   id_user: $("#valuation_mem"+i+""+j).val(),
-                  id_exer: $("#id_exer_edit"+i+""+j).val()
+                  id_exer: $("#id_exer_edit"+i+""+j).val(),
+                  id_group: $("#id_group").val(),
+                  toppic_name: $("#toppic_name"+i).val(),
+                  exercise_name: $("#exercise_name_hidden"+i+""+j).val()
                 }, (data)=>{
-                  if(data == "success"){
+                  if(data.status == "success"){
+                    $("#activity_box ul").append(""+
+                    '<li>'+
+                      '<a class="mainTarget" href="#">'+data.name+'</a>'+
+                      '<span class="content_activi"> trong </span>'+
+                      '  <a class="mainTarget" href="#">'+data.exercise_name+'</a>'+
+                        '<span class="content_activi"> của </span>'+
+                      '<a class="mainTarget" href="#">'+data.toppic_name+'</a>'+
+                      '<br>'+
+                       '<span class="content_activi">'+
+                        data.activity+
+                       '</span>'+
+                    '</li>'+
+                    "");
                     $("#msg_success_evaluation"+i+""+j).html("Thành công").css('color', 'green');
                     setTimeout(()=>{
                       $("#msg_success_evaluation"+i+""+j).html("");
@@ -1289,6 +1370,99 @@ $(document).ready(function(){
         });
       }
     }
+
+    $("#activity_box").hide();
+    $("#closeBoxMember").hide();
+    $("#activity_close_btn").hide();
+    $("#all_member").hide();
+    $("#open_member").click(()=>{
+      $("#closeBoxMember").show();
+      $("#all_member").show();
+      $("#activity_box").hide();
+      $("#activity_close_btn").hide();
+    })
+    $("#closeBoxMember").click(()=>{
+      $("#closeBoxMember").hide();
+      $("#all_member").hide();
+    })
+    $("#activity_close_btn").click(()=>{
+      $("#activity_box").hide();
+      $("#activity_close_btn").hide();
+    });
+    $("#activity_btn").click(()=>{
+      $("#activity_box").show();
+      $("#activity_close_btn").show();
+      $("#closeBoxMember").hide();
+      $("#all_member").hide();
+
+      $.post("/activity", {
+        id_group: $('#id_group').val()
+      }, (data)=>{
+        if(data.listActivity.length == 0){
+          $("#activity_box ul").html("<h4> Chưa có hoạt động nào</h4>");
+        }else{
+          $("#activity_box ul").html("");
+          for(let i = 0; i < data.listActivity.length; i++){
+            if(data.listActivity[i].exercise_name == null &&
+              data.listActivity[i].toppic_name != null){
+              $("#activity_box ul").append(""+
+              '<li>'+
+                '<a class="mainTarget" href="#">'+data.listActivity[i].name+'</a>'+
+                '<span class="content_activi"> trong </span>'+
+                '<a class="mainTarget" href="#">'+data.listActivity[i].toppic_name+'</a>'+
+                '<br>'+
+                 '<span class="content_activi">'+
+                  data.listActivity[i].activity+
+                 '</span>'+
+              '</li>'+
+              "");
+            }else if(data.listActivity[i].toppic_name == null&&
+              data.listActivity[i].exercise_name == null){
+                $("#activity_box ul").append(""+
+                '<li>'+
+                  '<a class="mainTarget" href="#">'+data.listActivity[i].name+'</a>'+
+                  '<br>'+
+                   '<span class="content_activi">'+
+                    data.listActivity[i].activity+
+                   '</span>'+
+                '</li>'+
+                "");
+              }else if(data.listActivity[i].exercise_name != null&&
+              data.listActivity[i].toppic_name != null){
+                $("#activity_box ul").append(""+
+                '<li>'+
+                  '<a class="mainTarget" href="#">'+data.listActivity[i].name+'</a>'+
+                  '<span class="content_activi"> trong </span>'+
+                  '  <a class="mainTarget" href="#">'+data.listActivity[i].exercise_name+'</a>'+
+                    '<span class="content_activi"> của </span>'+
+                  '<a class="mainTarget" href="#">'+data.listActivity[i].toppic_name+'</a>'+
+                  '<br>'+
+                   '<span class="content_activi">'+
+                    data.listActivity[i].activity+
+                   '</span>'+
+                '</li>'+
+                "");
+              }
+
+          }
+        }
+      })
+    });
+    $("#member_group").show();
+    $("#closeActivity").click(()=>{
+      $("#member_group").hide();
+      $("#member_group").removeClass("col-sm-3");
+      $("#content_group").removeClass("col-sm-9");
+      $("#member_group").addClass("col-sm-0");
+      $("#content_group").addClass("col-sm-12");
+    });
+    $("#title_group").click(()=>{
+      $("#member_group").show();
+      $("#member_group").addClass("col-sm-3");
+      $("#content_group").addClass("col-sm-9");
+      $("#member_group").removeClass("col-sm-0");
+      $("#content_group").removeClass("col-sm-12");
+    });
 });
 
 function validateEmpty(name1){

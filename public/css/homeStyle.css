@@ -24,6 +24,23 @@ body, html{
   margin-top: 10px;
   margin-left: 10px;
 }
+#guideATag{
+  margin-left: 10px;
+  font-weight: 16px;
+  font-size: 16;
+  text-decoration: none;
+}
+#guideContent{
+  width: 100%;
+  margin: 10;
+  height: 50%;
+  /*background-color: white;*/
+}
+#closeGuide{
+  display: block;
+  margin-left: 48%;
+  text-decoration: none;
+}
 .box-add-group{
   width: 300px;
   height: 180px;

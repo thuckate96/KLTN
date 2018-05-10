@@ -262,9 +262,23 @@ $(document).ready(()=>{
       });
     });
   }
-  
+  $("#guideContent").hide();
+  $("#addNewGr").show();
+  $("#list_groupUL").show();
+  $("#guideATag").click(function(){
+    $("#guideContent").show();
+    $("#addNewGr").hide();
+    $("#list_groupUL").hide();
+  });
+  $("#closeGuide").click(()=>{
+    $("#guideContent").hide();
+    $("#addNewGr").show();
+    $("#list_groupUL").show();
+  });
+
   function validateEmpty(name) {
     if(name == "") return false;
     return true;
   }
+
 });

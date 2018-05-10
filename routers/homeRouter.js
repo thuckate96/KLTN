@@ -31,7 +31,24 @@ con.connect(function(err){
   }
 });
 
-
+router.post("/activity", (req, res)=>{
+  let id_group = req.body.id_group;
+  let sql = "select name, exercise_name, toppic_name, activity "+
+  "from show_activity "+
+  "where group_id = '"+id_group+"'"+
+  " order by id DESC limit 6";
+  con.query(sql, (err, listActivity)=>{
+    if(err) {
+      console.log("Error lits activity");
+      return ;
+    }else {
+      console.log(listActivity);
+      res.json({
+        listActivity: listActivity
+      });
+    }
+  })
+});
 router.post("/register/handle", (req, res)=>{
   var email = req.body.email;
   var fullname = req.body.fullname;
@@ -110,7 +127,22 @@ router.post("/group/addToppic", (req, res)=>{
   con.query(sql, (err)=>{
     if(err)throw err;
     else {
-      res.end("success");
+      let activity = "Thêm chủ đề mới";
+      let sqlActivity = "INSERT INTO show_activity(name, group_id, activity)"+
+      " VALUES('"+req.session.fullname+"', '"+id_group+"', '"+activity+"')";
+      con.query(sqlActivity, (err)=>{
+        if(err){
+          console.log("Error to insert activity add toppic ");
+          return ;
+        }else{
+          res.json({
+            message: "success",
+            name: req.session.fullname,
+            activity: activity
+          });
+        }
+      })
+
     }
   })
 });
@@ -257,7 +289,27 @@ router.post("/addwork", (req, res)=>{
       console.log("err to insert intio exer_work");
       return ;
     }else {
-      res.end("success");
+      let activity = "Thêm công việc mới";
+      let sqlActivity = "INSERT INTO show_activity(name, toppic_name,"+
+      " exercise_name, group_id, activity)"+
+      " VALUES('"+req.session.fullname+"', '"+req.body.toppic_name+
+       "', '"+req.body.exercise_name+"', '"+req.body.id_group+"', '"+activity+"')";
+      con.query(sqlActivity, (err)=>{
+        if(err){
+          console.log("Error to insert activity add schedule ");
+          return ;
+        }else{
+          res.json({
+            status: "success",
+            name: req.session.fullname ,
+            toppic_name:  req.body.toppic_name,
+            exercise_name: req.body.exercise_name,
+            activity: activity
+          })
+
+        }
+      })
+
     }
   })
 });
@@ -358,8 +410,22 @@ router.post("/addExercise",(req, res)=>{
   con.query(sql,(err)=>{
     if(err)throw err;
     else{
-
-      res.json({status: "success"});
+      let activity = "Thêm bài tập mới";
+      let sqlActivity = "INSERT INTO show_activity(name, toppic_name, group_id, activity)"+
+      " VALUES('"+req.session.fullname+"', '"+req.body.toppic_name+"', '"+req.body.id_group+"', '"+activity+"')";
+      con.query(sqlActivity, (err)=>{
+        if(err){
+          console.log("Error to insert activity add toppic ");
+          return ;
+        }else{
+          res.json({
+            status: "success",
+            name: req.session.fullname,
+            toppic_name: req.body.toppic_name,
+            activity: activity
+          });
+        }
+      })
     }
   });
 });
@@ -623,7 +689,25 @@ router.post("/advaluation", (req, res)=>{
   con.query(sql, (err)=>{
     if(err) throw err;
     else {
-      res.end("success");
+      let activity = "Thêm nhận xét mới";
+      let sqlActivity = "INSERT INTO show_activity(name, toppic_name,"+
+      " exercise_name, group_id, activity)"+
+      " VALUES('"+req.session.fullname+"', '"+req.body.toppic_name+
+       "', '"+req.body.exercise_name+"', '"+req.body.id_group+"', '"+activity+"')";
+      con.query(sqlActivity, (err)=>{
+        if(err){
+          console.log("Error to insert activity add schedule ");
+          return ;
+        }else{
+          res.json({
+            status: "success",
+            name: req.session.fullname ,
+            toppic_name:  req.body.toppic_name,
+            exercise_name: req.body.exercise_name,
+            activity: activity
+          }) 
+        }
+      })
     }
   })
 })
@@ -654,7 +738,26 @@ router.post("/schedule", (req, res)=>{
       console.log("error to insert to exercise_schedule");
       return ;
     }else {
-      res.end("success");
+      let activity = "Thêm lịch mới";
+      let sqlActivity = "INSERT INTO show_activity(name, toppic_name, exercise_name, group_id, activity)"+
+      " VALUES('"+req.session.fullname+"', '"+req.body.toppic_name+
+       "', '"+req.body.exercise_name+"', '"+req.body.id_group+"', '"+activity+"')";
+      con.query(sqlActivity, (err)=>{
+        if(err){
+          console.log("Error to insert activity add schedule ");
+          return ;
+        }else{
+          res.json({
+            status: "success",
+            name: req.session.fullname ,
+            toppic_name:  req.body.toppic_name,
+            exercise_name: req.body.exercise_name,
+            activity: activity
+          })
+
+        }
+      })
+
     }
   })
 });

@@ -110,7 +110,18 @@ module.exports = (io)=>{
           console.log("Error to insert discuss to database");
           return ;
         }else{
-
+          let activity = "Bình luận: "+data.discuss;
+          let sqlActivity = "INSERT INTO show_activity(name, toppic_name,"+
+          " exercise_name, group_id, activity)"+
+          " VALUES('"+data.name_user+"', '"+data.toppic_name+
+           "', '"+data.exercise_name+"', '"+data.id_group+"', '"+activity+"')";
+          con.query(sqlActivity, (err)=>{
+            if(err){
+              console.log("Error to insert activity add schedule ");
+              return ;
+            }else{
+            }
+          })
         }
       })
     });

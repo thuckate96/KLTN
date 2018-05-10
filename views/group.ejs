@@ -19,84 +19,105 @@
     <div>
       <% include header%>
       <div class="body-group">
-        <div class="member-group">
+        <div class="col-sm-3  member-group" id="member_group">
 
-          <div class="user-box">
+          <a href="#" id="closeActivity">
+            <span style="font-size: 20px; float: right; margin-top: 2px;"
+            class="glyphicon glyphicon-remove"> </span>
+          </a>
+          <br>
+          <a id="open_member" href="#">
+            <h4>Thành viên (<%=listMemg.length+1%>)</h4>
+          </a>
+          <a id="closeBoxMember" href="#">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+          <div id="all_member" class="">
+            <div class="user-box">
 
-            <div class="user-setting">
-              <!-- <div class="icon-message">
-                <a href="#"><img src="images/message.png" alt="message icon"></a>
-              </div> -->
-              <div id="icon-add-newmember" class="icon-add-newmember">
-                <a href="#"><img src="images/plus-icon.png" alt="add new member"></a>
-              </div>
-              <div id="search-gr" class="input-group" style="margin-top: 13px;">
-                <div class="input-group-btn" >
-                  <button class=" btn btn-default" id="cancel_search" type="button"> X</button>
+              <div class="user-setting">
+                <!-- <div class="icon-message">
+                  <a href="#"><img src="images/message.png" alt="message icon"></a>
+                </div> -->
+                <div id="icon-add-newmember" class="icon-add-newmember">
+                  <a href="#"><img src="images/plus-icon.png" alt="add new member"></a>
                 </div>
-                <input type="text" class="form-control" id="val-search-gr" placeholder="Search">
-                <div class="input-group-btn" >
-                  <button class=" btn btn-default" id="search-gr-btn" type="button"> Search</button>
+                <div id="search-gr" class="input-group" style="margin-top: 13px;">
+                  <div class="input-group-btn">
+                    <button class=" btn btn-default" id="cancel_search" type="button"> X</button>
+                  </div>
+                  <input type="text" class="form-control" id="val-search-gr" placeholder="Search">
+                  <div class="input-group-btn" >
+                    <button class=" btn btn-default" id="search-gr-btn" type="button"> Search</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div id="list-search" class="list-search">
-            <div class="title-list-search">
-              <span class="set-title glyphicon glyphicon-search "></span>
-              <span class="set-title">kết quả tìm kiếm</span>
-              <span id="rm_box_search" class="set-title right-set glyphicon glyphicon-remove"></span>
-            </div>
-            <div id="content_list_search"  class="content-list-search">
-              <ul>
-
-
-              </ul>
-            </div>
-          </div>
-          <input type="hidden" id="lenListMemg" value="<%=listMemg.length%>">
-          <input type="hidden" id="name_user" value="<%=name%>">
-          <ul class="list-member">
-            <li>
-              <div class="icon-member">
-                <img src="images/user.png" alt="member icon">
+            <div id="list-search" class="list-search">
+              <div class="title-list-search">
+                <span class="set-title glyphicon glyphicon-search "></span>
+                <span class="set-title">kết quả tìm kiếm</span>
+                <span id="rm_box_search" class="set-title right-set glyphicon glyphicon-remove"></span>
               </div>
-              <div class="name-member">
-                <input type="hidden" id="member_chat_id0"
-                value="<%=idAdmin%>">
-                <a id="member_chat0" href="#id=<%=idAdmin%>"><%=addMinGr%>  </a>
+              <div id="content_list_search"  class="content-list-search">
+                <ul> </ul>
               </div>
-            </li>
-            <%for(let memg=0; memg<listMemg.length;memg++){%>
+            </div>
+            <input type="hidden" id="lenListMemg" value="<%=listMemg.length%>">
+            <input type="hidden" id="name_user" value="<%=name%>">
+
+            <ul class="list-member">
               <li>
                 <div class="icon-member">
                   <img src="images/user.png" alt="member icon">
                 </div>
                 <div class="name-member">
-                  <input type="hidden" id="member_chat_id<%=memg+1%>"
-                  value="<%=listMemg[memg].id_user%>">
-                  <a id="member_chat<%=memg+1%>" href="#id=<%=listMemg[memg].id_user%>">
-                    <%=listMemg[memg].fullname%>
-                  </a>
+                  <input type="hidden" id="member_chat_id0"
+                  value="<%=idAdmin%>">
+                  <a id="member_chat0" href="#id=<%=idAdmin%>"><%=addMinGr%>  </a>
                 </div>
               </li>
-            <%}%>
-          </ul>
-        </div>
+              <%for(let memg=0; memg<listMemg.length;memg++){%>
+                <li>
+                  <div class="icon-member">
+                    <img src="images/user.png" alt="member icon">
+                  </div>
+                  <div class="name-member">
+                    <input type="hidden" id="member_chat_id<%=memg+1%>"
+                    value="<%=listMemg[memg].id_user%>">
+                    <a id="member_chat<%=memg+1%>" href="#id=<%=listMemg[memg].id_user%>">
+                      <%=listMemg[memg].fullname%>
+                    </a>
+                  </div>
+                </li>
+              <%}%>
+            </ul>
+          </div>
+            <br>
+            <a id="activity_btn" style="display: inline-block;" href="#"> Hoạt động </a>
+            <a id="activity_close_btn" style="display: inline-block; float: right;
+              margin-right :2px;" href="#">
+              <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <div id="activity_box" class="activity-box">
+              <ul>
+              </ul>
+            </div>
+          </div>
+
         <div id="box_chat_child" class="box-chat-child"> </div>
-
-
-        <div class="content-group">
+        <div id="content_group" class="col-sm-9 content-group">
            <div class="title-group">
              <div class="icon-group">
                <img src="images/icon-group.png" alt="group icon">
              </div>
              <div class="name-group">
-               <a style="text-decoration: none;"><%=group_name%> </a>
+               <a id="title_group" href="#" style="text-decoration: none;">
+                 <%=group_name%>  </a>
              </div>
-             <div class="btn-call">
+             <!-- <div class="btn-call">
                <a href="#"><span class="glyphicon glyphicon-facetime-video"></span></a>
-             </div>
+             </div> -->
            </div>
 
            <div class="" style="overflow:auto;height:550px;">
@@ -105,10 +126,11 @@
             <input type="hidden" id="rs_UNG" value="<%=resultUNG%>">
             <input type="hidden" id="lenListMemWork" value="<%=listMemWork.length%>">
              <%for(var toppic=0; toppic<listTopic.length; toppic++){%>
-
                <div class="list-toppic">
                  <div class="name-toppic">
                    <a id="btn_edit_toppic<%=toppic%>" href="#"><%=listTopic[toppic].topic_name%> </a>
+                   <input type="hidden" id="toppic_name<%=toppic%>"
+                    value="<%=listTopic[toppic].topic_name%>">
                  </div>
                  <div id="box_edit_toppic<%=toppic%>" class="">
                    <input type="hidden" id="id_toppic_edit<%=toppic%>"
@@ -137,7 +159,8 @@
                           data-target="#myModal<%=toppic%><%=exer%>">
                            <%=listExer[exer].exercise_name%>
                          </a>
-
+                        <input type="hidden" id="exercise_name_hidden<%=toppic%><%=exer%>"
+                        value="<%=listExer[exer].exercise_name%>">
                          <div class="modal fade" id="myModal<%=toppic%><%=exer%>" role="dialog">
                          <div class="modal-dialog">
                            <!-- Modal content-->
@@ -400,7 +423,7 @@
 
                </div>
                <div id="display_file_attachment<%=toppic%><%=exer%>" class="">
-                 
+
                </div>
              </div>
              </div>
@@ -468,6 +491,8 @@
                    <input type="text" style="margin-bottom:3px;"
                     class="form-control" id="exercise_name<%=toppic%>" value="">
                   <input type="hidden" id="toppic_id<%=toppic%>" value="<%=listTopic[toppic].id%>">
+
+
                    <button class="btn btn-default" type="button"
                     id="exercise_add<%=toppic%>">
                      Thêm</button>

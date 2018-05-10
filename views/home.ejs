@@ -39,6 +39,100 @@
       <%}%>
       <div id="list_group" class="list-group">
         <div class="box">
+          <div style="width: 50%; height: 10px;"> </div>
+          <a id="guideATag" href="#">Hướng dẫn sử dụng</a><br>
+          <div id="guideContent" class="">
+            <h4>Hướng dẫn 1</h4>
+            <img width="70%" height="500px" src="/images/dangnhap2.png" alt="register">
+            <h4>Hướng dẫn 2</h4>
+            <img width="70%" height="500px" src="/images/homeGuide.png" alt="register">
+            <h4>Hướng dẫn 3</h4>
+            <img width="70%" height="500px" src="/images/hd1.png" alt="register">
+            <h4>Hướng dẫn 4</h4>
+            <img width="70%" height="500px" src="/images/laplich1.png" alt="register">
+            <h4>Hướng dẫn 5</h4>
+            <img width="70%" height="500px" src="/images/thembt1.png" alt="register">
+            <h4>Hướng dẫn 6</h4>
+            <img width="70%" height="500px" src="/images/comment.png" alt="register">
+            <h4>Hướng dẫn 7</h4>
+            <img width="70%" height="500px" src="/images/binhluan1.png" alt="register">
+            <!-- <div class="row">
+              <div class="col-sm-6" style="border-right: 1px solid white;">
+                <h4>Bước 1. Đăng ký</h4>
+                  <p>1. Nhập đầy đủ thông tin vào ô đăng ký.</p>
+                  <p>2. Click vào button "Đăng ký".</p>
+                  <img width="63%" height="400px" src="/images/register.png" alt="register">
+              </div>
+              <div class="col-sm-6">
+                <h4>Bước 2. Đăng nhập</h4>
+                <p>1. Nhập đầy đủ thông tin vào ô đăng nhập.</p>
+                <p>2. Click vào button "Đăng nhập".</p>
+                <img src="/images/login.png" alt="login">
+              </div>
+            </div>
+            <div class="row">
+              <div style="border-right: 1px solid white;" class="col-sm-6">
+                <h4>Bước 3. Tạo nhóm</h4>
+                <p>1. Click vào button "Tạo nhóm".</p>
+                <p>2. Nhập đầy đủ thông tin vào ô form tạo nhóm.</p>
+                <p>3. Click vào button "Tạo".</p>
+                <img src="/images/bt1.png" alt="Create Group">
+              </div>
+              <div  class="col-sm-6">
+                <h4>Bước 4. Thêm chủ đề</h4>
+                <p>1. Click vào button "Thêm chủ đề".</p>
+                <p>2. Nhập thông tin vào form và chọn quyền .</p>
+                <p>3. Click vào button "Thêm".</p>
+                <img src="/images/addToppic.png" alt="add Toppic">
+              </div>
+            </div>
+            <div class="row">
+              <div style="border-right: 1px solid white;" class="col-sm-6">
+                <h4>Bước 5. Thêm bài tập</h4>
+                <p>1. Click vào button "Thêm bài tập".</p>
+                <p>2. Nhập tên bài tập.</p>
+                <p>3. Click vào button thêm.</p>
+                <img src="/images/addExer.png" alt="">
+              </div>
+              <div class="col-sm-6">
+                <h4>Bước 6. Tạo lịch </h4>
+                <p>1. Nhập lịch.</p>
+                <p>2. Click vào button "Tạo lịch".</p>
+                <img width="90%" src="/images/schedule.png" alt="schedule">
+              </div>
+            </div>
+            <div class="row">
+              <div  class="col-sm-6">
+                <h4>Bước 7. Thảo luận</h4>
+                <p>1. Nhập thông tin vào ô thảo luận.</p>
+                <p>2. Click vào button "Thảo luận".</p>
+                <p>3. Có thể đính kèm thêm file.</p>
+                <img width="90%" src="/images/discuss.png" alt="discuss">
+              </div>
+              <div style="border-left: 1px solid white;" class="col-sm-6">
+                <h4>Bước 8. Thêm công việc</h4>
+                <p>1. Nhập công việc.</p>
+                <p>2. Chọn thành viên.</p>
+                <p>3. Nhập thời hạn.</p>
+                <p>4. Click vào button "Thêm công việc".</p>
+                <img src="/images/addWork.png" alt="add work">
+              </div>
+            </div>
+            <div class="row">
+              <div style="border-right: 1px solid white;" class="col-sm-6">
+                <h4>Bước 9. Đánh giá </h4>
+                <p>1. Nhập nhận xét.</p>
+                <p>2. Xếp loại.</p>
+                <p>3. Chọn thành viên.</p>
+                <p>4. Click vào button "Nhận xét".</p>
+                <img width="90%" src="/images/danhgia.png" alt="evaluation">
+              </div>
+              <div class="col-sm-6">
+
+              </div>
+            </div> -->
+            <h4><a id="closeGuide" href="#">Đóng</a></h4>
+          </div>
           <button type="button" class="btn btn-primary" id="addNewGr">
             <span class="glyphicon glyphicon-plus"></span>
             <span>Tạo nhóm mới</span>
@@ -61,7 +155,7 @@
               </a>
             </div>
           </div>
-      		<ul>
+      		<ul id="list_groupUL">
             <input type="hidden" id="lenListGr" value="<%=listGroup.length%>">
             <%for(let group = 0; group < listGroup.length; group++){%>
               <%if(listGroup[group].is_public == 1){%>
@@ -98,7 +192,7 @@
 
       	</div>
       </div>
-      
+
     </div>
   </body>
 </html>
